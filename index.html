@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>લાઇફ કોર્સ | Life Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;700&family=Noto+Sans:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the page */
+        body {
+            font-family: 'Poppins', 'Noto Sans', 'Noto Sans Gujarati', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .bg-gradient-custom {
+            background: linear-gradient(135deg, #FFF8E1, #FFECB3, #FFFDE7);
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 213, 79, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+        .lang-btn {
+            transition: all 0.3s ease;
+        }
+        .lang-btn.active {
+            background-color: #FFA000;
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(255, 160, 0, 0.39);
+        }
+        .link-button {
+            background-color: #FFC107;
+            color: #424242;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .link-button:hover {
+            background-color: #FFA000;
+            box-shadow: 0 4px 14px 0 rgba(255, 160, 0, 0.39);
+            transform: translateY(-2px);
+        }
+        .chapter-icon {
+            width: 50px;
+            height: 50px;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body class="bg-gradient-custom text-gray-800">
+
+    <!-- Main Container -->
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <!-- Header Section -->
+        <header class="text-center mb-8">
+            <h1 id="main-title" class="text-4xl md:text-5xl font-bold text-amber-700 mb-2">લાઇફ કોર્સ</h1>
+            <p id="author" class="text-lg text-amber-600">'ગુરુ ભગવંત - પ્રિયમ'</p>
+        </header>
+
+        <!-- Language Selection -->
+        <div class="flex justify-center space-x-2 mb-10">
+            <button id="lang-gu" class="lang-btn px-4 py-2 rounded-full font-semibold border-2 border-amber-400 text-amber-600">ગુજરાતી</button>
+            <button id="lang-hi" class="lang-btn px-4 py-2 rounded-full font-semibold border-2 border-amber-400 text-amber-600">हिन्दी</button>
+            <button id="lang-en" class="lang-btn px-4 py-2 rounded-full font-semibold border-2 border-amber-400 text-amber-600">English</button>
+        </div>
+
+        <!-- Chapters List -->
+        <main id="chapters-container" class="space-y-6">
+            <!-- Chapter cards will be inserted here by JavaScript -->
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 py-6 border-t-2 border-amber-200">
+            <p id="footer-text" class="text-gray-600">મનીષ વી. શાહ | વોટ્સએપ: 94299 26447 | (વડોદરા)</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Data for all languages
+        const content = {
+            gu: {
+                pageTitle: "લાઇફ કોર્સ | Life Course",
+                mainTitle: "લાઇફ કોર્સ",
+                author: "રચયિતા: 'ગુરુ ભગવંત - પ્રિયમ'",
+                chapters: [
+                    { num: '૧', title: 'માતા-પિતાને સમજીએ', desc: 'માતા-પિતા સાથેના અમૂલ્ય સંબંધને સમજીને જીવનને સમૃદ્ધ બનાવો.', link: 'https://mvshah027.github.io/parent/', linkName: 'માતા-પિતાને સમજીએ: અમૂલ્ય સંબંધ' },
+                    { num: '૨', title: 'ઔચિત્ય', desc: 'યોગ્ય સમયે યોગ્ય વર્તન દ્વારા જીવનને આનંદમય બનાવવાનો માર્ગ.', link: 'https://mvshah027.github.io/appropriate/', linkName: 'ઔચિત્ય : જીવનનો આનંદ માર્ગ' },
+                    { num: '૩', title: 'વિવેક', desc: 'સારા-નરસાનો ભેદ પારખીને સાચો નિર્ણય લેવાની કળા.', link: 'https://mvshah027.github.io/vivek/', linkName: 'જીવનમાં વિવેક નું મહત્વ' },
+                    { num: '૪', title: 'મર્યાદા', desc: 'જીવનમાં સ્વ-નિયંત્રણ અને અનુશાસનથી મળતી સાચી સ્વતંત્રતા.', link: 'https://mvshah027.github.io/maryada/', linkName: 'મર્યાદા: જીવનની સાચી સીમા' },
+                    { num: '૫', title: 'શીલ', desc: 'આચરણની શુદ્ધિ અને પવિત્રતા દ્વારા આત્મિક ઉન્નતિનો માર્ગ.', link: 'https://mvshah027.github.io/sheel/', linkName: 'શીલ: પવિત્રતાનો પંથ' },
+                    { num: '૬', title: 'અભ્યાસ', desc: 'શિક્ષણના સાચા અર્થને સમજીને જ્ઞાનની સાચી દિશા મેળવીએ.', link: 'https://mvshah027.github.io/study/', linkName: 'શિક્ષણ : એક ભ્રમણા અને સત્ય' },
+                    { num: '૭', title: 'વ્યવસાય', desc: 'પ્રામાણિકતા અને નૈતિકતાથી કરેલી કમાણી જ સાચું સુખ આપે છે.', link: 'https://mvshah027.github.io/profession/', linkName: 'શુદ્ધ કમાણી, શુદ્ધ જીવન' },
+                    { num: '૮', title: 'મિત્રતા', desc: 'સાચા મિત્રને કેવી રીતે ઓળખવા અને સંબંધોને કેવી રીતે નિભાવવા.', link: 'https://mvshah027.github.io/friendship/', linkName: 'મિત્રતા માર્ગદર્શિકા' },
+                    { num: '૯, ૧૦', title: 'મુમુક્ષુ પ્રેરણા', desc: 'આધ્યાત્મિક માર્ગે આગળ વધવા માટેની પ્રેરણા અને માર્ગદર્શન.', link: 'https://mvshah027.github.io/elevatinglife/', linkName: 'આત્મિક પ્રગતિનો માર્ગ' },
+                    { num: '૧૧', title: 'પ્રભુપૂજા', desc: 'ભક્તિ અને શ્રદ્ધાથી પ્રભુની પૂજા શા માટે અને કેવી રીતે કરવી?', link: 'https://mvshah027.github.io/prabhupuja/', linkName: 'પ્રભુપૂજા શા માટે?' },
+                    { num: '૧૨', title: 'સામાયિક', desc: 'સમતા અને મનની શાંતિ મેળવવા માટેની એક અદ્ભુત સાધના.', link: 'https://mvshah027.github.io/samayik/', linkName: 'સામાયિક: આત્માની શાંતિનો માર્ગ' },
+                    { num: '૧૩', title: 'જિનાલય', desc: 'મંદિર ફક્ત પૂજાનું સ્થળ નથી, પણ શ્રદ્ધા અને સેવાનો સંગમ છે.', link: 'https://mvshah027.github.io/temple/', linkName: 'શ્રદ્ધા, વિજ્ઞાન અને સમાજસેવા' },
+                    { num: '૧૪', title: 'દાન', desc: 'દાનનો સાચો મહિમા અને આપવાનો સાચો આનંદ શું છે?', link: 'https://mvshah027.github.io/donation/', linkName: 'દાનની સાચી સમજ' },
+                    { num: '૧૫', title: 'સ્માર્ટ ફોન', desc: 'ટેકનોલોજીનો વિવેકપૂર્ણ ઉપયોગ કેવી રીતે કરવો? અમૃત કે ઝેર?', link: 'https://mvshah027.github.io/mobile/', linkName: 'સ્માર્ટફોન: અમૃત કે ઝેર?' },
+                ],
+                footer: "સંપર્ક: મનીષ વી. શાહ | વોટ્સએપ: 94299 26447 | (વડોદરા)"
+            },
+            hi: {
+                pageTitle: "लाइफ़ कोर्स | Life Course",
+                mainTitle: "लाइफ़ कोर्स",
+                author: "रचयिता: 'गुरु भगवंत - प्रियम'",
+                chapters: [
+                    { num: '१', title: 'माता-पिता को समझें', desc: 'माता-पिता के साथ अनमोल रिश्ते को समझकर जीवन को समृद्ध बनाएं।', link: 'https://mvshah027.github.io/parent/', linkName: 'माता-पिता को समझें: एक अनमोल रिश्ता' },
+                    { num: '२', title: 'औचित्य', desc: 'सही समय पर सही आचरण से जीवन को आनंदमय बनाने का मार्ग।', link: 'https://mvshah027.github.io/appropriate/', linkName: 'औचित्य: जीवन का आनंद मार्ग' },
+                    { num: '३', title: 'विवेक', desc: 'अच्छे और बुरे में भेद करके सही निर्णय लेने की कला।', link: 'https://mvshah027.github.io/vivek/', linkName: 'जीवन में विवेक का महत्व' },
+                    { num: '४', title: 'मर्यादा', desc: 'जीवन में आत्म-नियंत्रण और अनुशासन से प्राप्त सच्ची स्वतंत्रता।', link: 'https://mvshah027.github.io/maryada/', linkName: 'मर्यादा: जीवन की सच्ची सीमा' },
+                    { num: '५', title: 'शील', desc: 'आचरण की शुद्धि और पवित्रता के माध्यम से आध्यात्मिक उन्नति का मार्ग।', link: 'https://mvshah027.github.io/sheel/', linkName: 'शील: पवित्रता का पथ' },
+                    { num: '६', title: 'अध्ययन', desc: 'शिक्षा के सही अर्थ को समझकर ज्ञान की सही दिशा प्राप्त करें।', link: 'https://mvshah027.github.io/study/', linkName: 'शिक्षा: एक भ्रम और सत्य' },
+                    { num: '७', title: 'व्यवसाय', desc: 'ईमानदारी और नैतिकता से की गई कमाई ही सच्चा सुख देती है।', link: 'https://mvshah027.github.io/profession/', linkName: 'शुद्ध कमाई, शुद्ध जीवन' },
+                    { num: '८', title: 'मित्रता', desc: 'सच्चे मित्र को कैसे पहचानें और रिश्तों को कैसे निभाएं।', link: 'https://mvshah027.github.io/friendship/', linkName: 'मित्रता मार्गदर्शिका' },
+                    { num: '९, १०', title: 'मुमुक्षु प्रेरणा', desc: 'आध्यात्मिक पथ पर आगे बढ़ने के लिए प्रेरणा और मार्गदर्शन।', link: 'https://mvshah027.github.io/elevatinglife/', linkName: 'आत्मिक प्रगति का मार्ग' },
+                    { num: '११', title: 'प्रभु पूजा', desc: 'भक्ति और श्रद्धा से प्रभु की पूजा क्यों और कैसे करें?', link: 'https://mvshah027.github.io/prabhupuja/', linkName: 'प्रभु पूजा क्यों?' },
+                    { num: '१२', title: 'सामायिक', desc: 'समता और मन की शांति प्राप्त करने के लिए एक अद्भुत साधना।', link: 'https://mvshah027.github.io/samayik/', linkName: 'सामायिक: आत्मा की शांति का मार्ग' },
+                    { num: '१३', title: 'जिनालय', desc: 'मंदिर केवल पूजा का स्थान नहीं, बल्कि श्रद्धा और सेवा का संगम है।', link: 'https://mvshah027.github.io/temple/', linkName: 'श्रद्धा, विज्ञान और समाजसेवा' },
+                    { num: '१४', title: 'दान', desc: 'दान का सच्चा महत्व और देने का असली आनंद क्या है?', link: 'https://mvshah027.github.io/donation/', linkName: 'दान की सही समझ' },
+                    { num: '१५', title: 'स्मार्ट फ़ोन', desc: 'प्रौद्योगिकी का विवेकपूर्ण उपयोग कैसे करें? अमृत या विष?', link: 'https://mvshah027.github.io/mobile/', linkName: 'स्मार्टफोन: अमृत या विष?' },
+                ],
+                footer: "संपर्क: मनीष वी. शाह | व्हाट्सएप: 94299 26447 | (वडोदरा)"
+            },
+            en: {
+                pageTitle: "Life Course",
+                mainTitle: "Life Course",
+                author: "Author: 'Guru Bhagwant - Priyam'",
+                chapters: [
+                    { num: '1', title: 'Understanding Parents', desc: 'Enrich your life by understanding the priceless bond with your parents.', link: 'https://mvshah027.github.io/parent/', linkName: 'Understanding Parents: A Priceless Bond' },
+                    { num: '2', title: 'Appropriateness', desc: 'The path to a joyful life through right conduct at the right time.', link: 'https://mvshah027.github.io/appropriate/', linkName: 'Appropriateness: The Path of Joy' },
+                    { num: '3', title: 'Discretion', desc: 'The art of making the right decisions by distinguishing good from bad.', link: 'https://mvshah027.github.io/vivek/', linkName: 'The Importance of Discretion' },
+                    { num: '4', title: 'Boundaries', desc: 'True freedom found through self-control and discipline in life.', link: 'https://mvshah027.github.io/maryada/', linkName: 'Boundaries: The True Limit of Life' },
+                    { num: '5', title: 'Virtue', desc: 'The path of spiritual upliftment through purity of conduct.', link: 'https://mvshah027.github.io/sheel/', linkName: 'Virtue: The Path of Purity' },
+                    { num: '6', title: 'Education', desc: 'Find the true direction of knowledge by understanding its real meaning.', link: 'https://mvshah027.github.io/study/', linkName: 'Education: An Illusion and Truth' },
+                    { num: '7', title: 'Profession', desc: 'Only earnings made with honesty and ethics bring true happiness.', link: 'https://mvshah027.github.io/profession/', linkName: 'Pure Earnings, Pure Life' },
+                    { num: '8', title: 'Friendship', desc: 'How to recognize a true friend and nurture relationships.', link: 'https://mvshah027.github.io/friendship/', linkName: 'A Guide to Friendship' },
+                    { num: '9, 10', title: 'Spiritual Inspiration', desc: 'Inspiration and guidance for progressing on the spiritual path.', link: 'https://mvshah027.github.io/elevatinglife/', linkName: 'The Path of Spiritual Progress' },
+                    { num: '11', title: 'Worship', desc: 'Why and how to worship the divine with devotion and faith.', link: 'https://mvshah027.github.io/prabhupuja/', linkName: 'Why Worship?' },
+                    { num: '12', title: 'Samayik (Equanimity)', desc: 'A profound practice to attain equanimity and peace of mind.', link: 'https://mvshah027.github.io/samayik/', linkName: 'Samayik: Path to Inner Peace' },
+                    { num: '13', title: 'The Temple', desc: 'A temple is not just a place of worship, but a confluence of faith and service.', link: 'https://mvshah027.github.io/temple/', linkName: 'Faith, Science, and Social Service' },
+                    { num: '14', title: 'Donation', desc: 'What is the true glory of giving and the real joy of charity?', link: 'https://mvshah027.github.io/donation/', linkName: 'The True Meaning of Donation' },
+                    { num: '15', 'title': 'The Smart Phone', desc: 'How to use technology wisely. A blessing or a curse?', link: 'https://mvshah027.github.io/mobile/', linkName: 'Smartphone: Nectar or Poison?' },
+                ],
+                footer: "Contact: Manish V. Shah | WhatsApp: 94299 26447 | (Vadodara)"
+            }
+        };
+        
+        // Icons for each chapter. Using simple SVGs.
+        const icons = [
+            // 1. Parents
+            `<svg class="chapter-icon text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21v-4.134a4 4 0 00-4-4H9a4 4 0 00-4 4v4.134"></path></svg>`,
+            // 2. Appropriateness
+            `<svg class="chapter-icon text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`,
+            // 3. Discretion
+            `<svg class="chapter-icon text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2 1M4 7l2-1M4 7v2.5M12 21.5l-2-1-2 1M12 16.5l2-1 2 1m-4 0l-2-1-2 1m12-4.5l2-1 2 1m-4 0l-2-1-2 1M6 12l-2-1-2 1M6 12v2.5"></path></svg>`,
+            // 4. Boundaries
+            `<svg class="chapter-icon text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path></svg>`,
+            // 5. Virtue
+            `<svg class="chapter-icon text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7-8-3.134-8-7zM4 11c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7-8-3.134-8-7z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21a9 9 0 110-18 9 9 0 010 18z"></path></svg>`,
+            // 6. Study
+            `<svg class="chapter-icon text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-5.747-6.247h11.494M12 21a9 9 0 110-18 9 9 0 010 18z"></path></svg>`,
+            // 7. Profession
+            `<svg class="chapter-icon text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>`,
+            // 8. Friendship
+            `<svg class="chapter-icon text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>`,
+            // 9,10. Inspiration
+            `<svg class="chapter-icon text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>`,
+            // 11. Worship
+            `<svg class="chapter-icon text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14.5 5 16.5 8 16.5 10c1.999 0 2.499-1.5 2.499-1.5s1.5 2.999 1.5 4.499a8.003 8.003 0 01-2.842 5.658zM7 12a5 5 0 015-5m0 0a5 5 0 015 5m-5 0v6m-5-6H2m10 6h5"></path></svg>`,
+            // 12. Samayik
+            `<svg class="chapter-icon text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16.67a1 1 0 01-1 1H4.33a1 1 0 01-1-1V7.33a1 1 0 011-1H7a1 1 0 011 1v9.34zM16 16.67a1 1 0 01-1 1h-2.67a1 1 0 01-1-1V7.33a1 1 0 011-1H15a1 1 0 011 1v9.34z"></path></svg>`,
+            // 13. Temple
+            `<svg class="chapter-icon text-lime-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>`,
+            // 14. Donation
+            `<svg class="chapter-icon text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>`,
+            // 15. Smart Phone
+            `<svg class="chapter-icon text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>`,
+        ];
+
+        const mainTitleEl = document.getElementById('main-title');
+        const authorEl = document.getElementById('author');
+        const chaptersContainer = document.getElementById('chapters-container');
+        const footerTextEl = document.getElementById('footer-text');
+        const langButtons = {
+            gu: document.getElementById('lang-gu'),
+            hi: document.getElementById('lang-hi'),
+            en: document.getElementById('lang-en')
+        };
+
+        // Function to render content based on selected language
+        function renderContent(lang) {
+            const data = content[lang];
+
+            // Update page title
+            document.title = data.pageTitle;
+
+            // Update header
+            mainTitleEl.textContent = data.mainTitle;
+            authorEl.textContent = data.author;
+
+            // Clear existing chapters
+            chaptersContainer.innerHTML = '';
+
+            // Populate chapters
+            data.chapters.forEach((chapter, index) => {
+                const chapterCard = `
+                    <div class="card rounded-2xl p-5 shadow-lg flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                        <div class="flex-shrink-0 flex items-center justify-center space-x-4">
+                             ${icons[index]}
+                             <span class="font-bold text-2xl text-amber-500 w-12 text-center">${chapter.num}</span>
+                        </div>
+                        <div class="flex-grow text-center sm:text-left">
+                            <h2 class="text-xl font-bold text-amber-800">${chapter.title}</h2>
+                            <p class="text-gray-600 mt-1">${chapter.desc}</p>
+                        </div>
+                        <div class="flex-shrink-0 w-full sm:w-auto">
+                            <a href="${chapter.link}" target="_blank" rel="noopener noreferrer" class="link-button rounded-full px-5 py-3 w-full sm:w-auto text-sm">
+                                ${chapter.linkName}
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                `;
+                chaptersContainer.innerHTML += chapterCard;
+            });
+
+            // Update footer
+            footerTextEl.textContent = data.footer;
+
+            // Update active language button
+            Object.values(langButtons).forEach(btn => btn.classList.remove('active'));
+            langButtons[lang].classList.add('active');
+            
+            // Set html lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Event Listeners for language buttons
+        langButtons.gu.addEventListener('click', () => renderContent('gu'));
+        langButtons.hi.addEventListener('click', () => renderContent('hi'));
+        langButtons.en.addEventListener('click', () => renderContent('en'));
+
+        // Initial render on page load
+        window.onload = () => {
+            renderContent('gu'); // Default to Gujarati
+        };
+    </script>
+
+</body>
+</html>
